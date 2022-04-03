@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="listeners.TestListeners"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="tests.SearchTestPage_04">
+        <methods>
+          <include name="setUp"/>
+          <include name="verifySearchPageTest"/>
+        </methods>
+      </class> <!-- tests.SearchTestPage_04 -->
+      <class name="utils.DataDrivenTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="loginTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- utils.DataDrivenTest -->
+      <class name="tests.LoginTestPage_02">
+        <methods>
+          <include name="tearDown"/>
+          <include name="loginPageTest"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- tests.LoginTestPage_02 -->
+      <class name="tests.IndexTestPage_03">
+        <methods>
+          <include name="loginPageTitleTest"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- tests.IndexTestPage_03 -->
+      <class name="tests.HomeTestPage_01">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="verifyHomePageTest"/>
+        </methods>
+      </class> <!-- tests.HomeTestPage_01 -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

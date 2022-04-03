@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>Automation Reports</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>Automation Test Results</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Apr 4, 2022 12:32:35 AM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.2</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='20%'><span class='strong'>1</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='80%'>4</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='9.091%'><span class='strong'>1</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='90.909%'>10</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>tests.IndexTestPage_03 :: crmLogoImageTest</span>
+						<span class='test-time'>Apr 4, 2022 12:33:42 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Apr 4, 2022 12:33:42 AM</span>
+	<span class='label end-time'>Apr 4, 2022 12:33:44 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+713ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>12:33:44 AM</td>
+					<td class='step-details'><span class='label white-text green'><b>Test MethodcrmLogoImageTestSuccessful</b></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>tests.IndexTestPage_03 :: loginPageTitleTest</span>
+						<span class='test-time'>Apr 4, 2022 12:34:22 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Apr 4, 2022 12:34:22 AM</span>
+	<span class='label end-time'>Apr 4, 2022 12:34:23 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+116ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:34:23 AM</td>
+					<td class='step-details'><details><summary><b><font color=red>Exception Occured, Click to see details:</font></b></summary>[org.testng.Assert.fail(Assert.java:99)<br> org.testng.Assert.failNotEquals(Assert.java:1037)<br> org.testng.Assert.assertEqualsImpl(Assert.java:140)<br> org.testng.Assert.assertEquals(Assert.java:122)<br> org.testng.Assert.assertEquals(Assert.java:629)<br> org.testng.Assert.assertEquals(Assert.java:639)<br> tests.IndexTestPage_03.loginPageTitleTest(IndexTestPage_03.java:36)<br> java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br> java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)<br> java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br> java.base/java.lang.reflect.Method.invoke(Method.java:568)<br> org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)<br> org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)<br> org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)<br> org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)<br> org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)<br> org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)<br> org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)<br> org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)<br> java.base/java.util.ArrayList.forEach(ArrayList.java:1511)<br> org.testng.TestRunner.privateRun(TestRunner.java:794)<br> org.testng.TestRunner.run(TestRunner.java:596)<br> org.testng.SuiteRunner.runTest(SuiteRunner.java:377)<br> org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)<br> org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)<br> org.testng.SuiteRunner.run(SuiteRunner.java:276)<br> org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)<br> org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)<br> org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)<br> org.testng.TestNG.runSuitesLocally(TestNG.java:1134)<br> org.testng.TestNG.runSuites(TestNG.java:1063)<br> org.testng.TestNG.run(TestNG.java:1031)<br> org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)<br> org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)<br> org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]</details></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:34:23 AM</td>
+					<td class='step-details'><span class='label white-text red'><b>Test Method loginPageTitleTestFailed</b></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>tests.LoginTestPage_02 :: loginPageTest</span>
+						<span class='test-time'>Apr 4, 2022 12:34:47 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Apr 4, 2022 12:34:47 AM</span>
+	<span class='label end-time'>Apr 4, 2022 12:35:11 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 23s+195ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:34:59 AM</td>
+					<td class='step-details'><details><summary><b><font color=red>Exception Occured, Click to see details:</font></b></summary>[java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br> java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)<br> java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br> java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)<br> java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)<br> org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)<br> org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)<br> org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)<br> org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)<br> org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)<br> org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)<br> org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)<br> org.openqa.selenium.remote.RemoteWebDriver.findElementByLinkText(RemoteWebDriver.java:380)<br> org.openqa.selenium.By$ByLinkText.findElement(By.java:220)<br> org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)<br> org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)<br> org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)<br> jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source)<br> pages_objects.IndexPage.clickHomeLogInButton(IndexPage.java:38)<br> tests.LoginTestPage_02.loginPageTest(LoginTestPage_02.java:37)<br> java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br> java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)<br> java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br> java.base/java.lang.reflect.Method.invoke(Method.java:568)<br> org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)<br> org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)<br> org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)<br> org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)<br> org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)<br> org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)<br> org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)<br> org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)<br> java.base/java.util.ArrayList.forEach(ArrayList.java:1511)<br> org.testng.TestRunner.privateRun(TestRunner.java:794)<br> org.testng.TestRunner.run(TestRunner.java:596)<br> org.testng.SuiteRunner.runTest(SuiteRunner.java:377)<br> org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)<br> org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)<br> org.testng.SuiteRunner.run(SuiteRunner.java:276)<br> org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)<br> org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)<br> org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)<br> org.testng.TestNG.runSuitesLocally(TestNG.java:1134)<br> org.testng.TestNG.runSuites(TestNG.java:1063)<br> org.testng.TestNG.run(TestNG.java:1031)<br> org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)<br> org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)<br> org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]</details></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:34:59 AM</td>
+					<td class='step-details'><span class='label white-text red'><b>Test Method loginPageTestFailed</b></span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:35:11 AM</td>
+					<td class='step-details'><details><summary><b><font color=red>Exception Occured, Click to see details:</font></b></summary>[org.testng.internal.reflect.DataProviderMethodMatcher.getConformingArguments(DataProviderMethodMatcher.java:43)<br> org.testng.internal.Parameters.injectParameters(Parameters.java:914)<br> org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:34)<br> org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)<br> org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)<br> org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)<br> org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)<br> java.base/java.util.ArrayList.forEach(ArrayList.java:1511)<br> org.testng.TestRunner.privateRun(TestRunner.java:794)<br> org.testng.TestRunner.run(TestRunner.java:596)<br> org.testng.SuiteRunner.runTest(SuiteRunner.java:377)<br> org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)<br> org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)<br> org.testng.SuiteRunner.run(SuiteRunner.java:276)<br> org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)<br> org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)<br> org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)<br> org.testng.TestNG.runSuitesLocally(TestNG.java:1134)<br> org.testng.TestNG.runSuites(TestNG.java:1063)<br> org.testng.TestNG.run(TestNG.java:1031)<br> org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)<br> org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)<br> org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]</details></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:35:11 AM</td>
+					<td class='step-details'><span class='label white-text red'><b>Test Method loginTestFailed</b></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>tests.HomeTestPage_01 :: verifyHomePageTest</span>
+						<span class='test-time'>Apr 4, 2022 12:35:35 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Apr 4, 2022 12:35:35 AM</span>
+	<span class='label end-time'>Apr 4, 2022 12:35:45 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 10s+218ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:35:45 AM</td>
+					<td class='step-details'><details><summary><b><font color=red>Exception Occured, Click to see details:</font></b></summary>[org.openqa.selenium.json.JsonOutput.convertUsingMethod(JsonOutput.java:332)<br> org.openqa.selenium.json.JsonOutput.lambda$new$16(JsonOutput.java:155)<br> org.openqa.selenium.json.JsonOutput.write(JsonOutput.java:264)<br> org.openqa.selenium.json.JsonOutput.lambda$null$21(JsonOutput.java:168)<br> java.base/java.util.LinkedHashMap$LinkedValues.forEach(LinkedHashMap.java:647)<br> org.openqa.selenium.json.JsonOutput.lambda$new$22(JsonOutput.java:168)<br> org.openqa.selenium.json.JsonOutput.write(JsonOutput.java:264)<br> org.openqa.selenium.json.JsonOutput.lambda$null$23(JsonOutput.java:177)<br> com.google.common.collect.SingletonImmutableBiMap.forEach(SingletonImmutableBiMap.java:65)<br> org.openqa.selenium.json.JsonOutput.lambda$new$24(JsonOutput.java:176)<br> org.openqa.selenium.json.JsonOutput.write(JsonOutput.java:264)<br> org.openqa.selenium.json.JsonOutput.write(JsonOutput.java:255)<br> org.openqa.selenium.json.Json.toJson(Json.java:42)<br> org.openqa.selenium.remote.http.AbstractHttpCommandCodec.encode(AbstractHttpCommandCodec.java:227)<br> org.openqa.selenium.remote.http.AbstractHttpCommandCodec.encode(AbstractHttpCommandCodec.java:117)<br> org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:152)<br> org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)<br> org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)<br> org.openqa.selenium.remote.RemoteWebDriver.perform(RemoteWebDriver.java:618)<br> org.openqa.selenium.interactions.Actions$BuiltAction.perform(Actions.java:639)<br> org.openqa.selenium.interactions.Actions.perform(Actions.java:595)<br> pages_objects.HomePage.clickOnBook(HomePage.java:41)<br> tests.HomeTestPage_01.verifyHomePageTest(HomeTestPage_01.java:44)<br> java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br> java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)<br> java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br> java.base/java.lang.reflect.Method.invoke(Method.java:568)<br> org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)<br> org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)<br> org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)<br> org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)<br> org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)<br> org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)<br> org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)<br> org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)<br> java.base/java.util.ArrayList.forEach(ArrayList.java:1511)<br> org.testng.TestRunner.privateRun(TestRunner.java:794)<br> org.testng.TestRunner.run(TestRunner.java:596)<br> org.testng.SuiteRunner.runTest(SuiteRunner.java:377)<br> org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)<br> org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)<br> org.testng.SuiteRunner.run(SuiteRunner.java:276)<br> org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)<br> org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)<br> org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)<br> org.testng.TestNG.runSuitesLocally(TestNG.java:1134)<br> org.testng.TestNG.runSuites(TestNG.java:1063)<br> org.testng.TestNG.run(TestNG.java:1031)<br> org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)<br> org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)<br> org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]</details></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:35:45 AM</td>
+					<td class='step-details'><span class='label white-text red'><b>Test Method verifyHomePageTestFailed</b></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>tests.SearchTestPage_04 :: verifySearchPageTest</span>
+						<span class='test-time'>Apr 4, 2022 12:36:07 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Apr 4, 2022 12:36:07 AM</span>
+	<span class='label end-time'>Apr 4, 2022 12:36:56 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 48s+223ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:36:56 AM</td>
+					<td class='step-details'><details><summary><b><font color=red>Exception Occured, Click to see details:</font></b></summary>[java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br> java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)<br> java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br> java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)<br> java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)<br> org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)<br> org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)<br> org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)<br> org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)<br> org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)<br> org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)<br> org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)<br> org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)<br> org.openqa.selenium.By$ByXPath.findElement(By.java:353)<br> org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)<br> org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)<br> org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)<br> jdk.proxy2/jdk.proxy2.$Proxy29.sendKeys(Unknown Source)<br> pages_objects.LoginPage.setUserName(LoginPage.java:31)<br> pages_objects.LoginPage.clickLogInButton(LoginPage.java:46)<br> tests.SearchTestPage_04.verifySearchPageTest(SearchTestPage_04.java:50)<br> java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br> java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)<br> java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br> java.base/java.lang.reflect.Method.invoke(Method.java:568)<br> org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)<br> org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)<br> org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)<br> org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)<br> org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)<br> org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)<br> org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)<br> org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)<br> java.base/java.util.ArrayList.forEach(ArrayList.java:1511)<br> org.testng.TestRunner.privateRun(TestRunner.java:794)<br> org.testng.TestRunner.run(TestRunner.java:596)<br> org.testng.SuiteRunner.runTest(SuiteRunner.java:377)<br> org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)<br> org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)<br> org.testng.SuiteRunner.run(SuiteRunner.java:276)<br> org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)<br> org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)<br> org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)<br> org.testng.TestNG.runSuitesLocally(TestNG.java:1134)<br> org.testng.TestNG.runSuites(TestNG.java:1063)<br> org.testng.TestNG.run(TestNG.java:1031)<br> org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)<br> org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)<br> org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]</details></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>12:36:56 AM</td>
+					<td class='step-details'><span class='label white-text red'><b>Test Method verifySearchPageTestFailed</b></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<!-- category view -->
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>5</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>11</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Apr 4, 2022 12:32:35 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Apr 4, 2022 12:36:56 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>260,832ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>Organization</td>
+								<td>Let's code it</td>
+							</tr>
+							<tr>
+								<td>Browser</td>
+								<td>Chrome</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 1,
+				failParent: 4,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 4,
+				
+				passChild: 1,
+				failChild: 10,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				exceptionsChild: 10,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>
